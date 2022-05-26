@@ -1,4 +1,4 @@
-FROM alpine:lastest
+FROM alpine:latest
 
 RUN apk --no-cache --update add ca-certificates libcap tzdata curl && \
 	rm -rf /var/cache/apk/* && \
