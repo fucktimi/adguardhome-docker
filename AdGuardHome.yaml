@@ -34,6 +34,7 @@ dns:
   - 223.5.5.5
   - 119.29.29.29
   - 211.140.13.188
+  - 140.207.198.6
   upstream_dns_file: ""
   bootstrap_dns:
   - 223.6.6.6
@@ -50,9 +51,9 @@ dns:
   - 127.0.0.0/8
   - ::1/128
   cache_size: 33554432
-  cache_ttl_min: 0
-  cache_ttl_max: 0
-  cache_optimistic: false
+  cache_ttl_min: 600
+  cache_ttl_max: 3600
+  cache_optimistic: true
   bogus_nxdomain: []
   aaaa_disabled: true
   enable_dnssec: true
@@ -91,7 +92,11 @@ tls:
   private_key: ""
   certificate_path: ""
   private_key_path: ""
-filters: []
+filters:
+- enabled: true
+  url: https://raw.githubusercontent.com/o0HalfLife0o/list/master/ad.txt
+  name: halflife
+  id: 1653631438
 whitelist_filters: []
 user_rules: []
 dhcp:
