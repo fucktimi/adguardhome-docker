@@ -99,7 +99,7 @@ filters:
   url: https://raw.githubusercontent.com/o0HalfLife0o/list/master/ad.txt
   name: halflife
   id: 1653631438
-  - enabled: true
+- enabled: true
   url: https://anti-ad.net/easylist.txt
   name: anti-ad
   id: 1658029581
