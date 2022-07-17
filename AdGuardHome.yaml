@@ -69,7 +69,9 @@ dns:
   safesearch_cache_size: 1048576
   parental_cache_size: 1048576
   cache_time: 30
-  rewrites: []
+  rewrites: 
+  - domain: iosapps.itunes.apple.com
+    answer: 36.150.3.28
   blocked_services: []
   upstream_timeout: 10s
   local_domain_name: lan
