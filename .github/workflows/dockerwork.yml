@@ -1,0 +1,36 @@
+name: Docker Image CI
+
+on:
+  schedule:
+    - cron: 5 6 * * 0
+  watch:
+    types: started
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    
+    
+    env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        
+    steps:
+    - uses: actions/checkout@v2
+    
+    - id: string
+      uses: ASzc/change-string-case-action@v1
+      with:
+        string: ${{ github.event.repository.name }}
+    - run: echo "REPO_NAME=$(echo "${{ steps.string.outputs.lowercase }}")" >> $GITHUB_ENV
+                        
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag $DOCKER_USERNAME/$REPO_NAME
+      
+    - name: Docker login
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    
+    - name: Docker push
+      run: docker push $DOCKER_USERNAME/$REPO_NAME
