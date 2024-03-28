@@ -1,8 +1,8 @@
 http:
   pprof:
-    port: 5335
+    port: 7035
     enabled: false
-  address: 0.0.0.0:3030
+  address: 0.0.0.0:3000
   session_ttl: 720h
 users:
   - name: "1"
@@ -14,8 +14,8 @@ language: ""
 theme: auto
 dns:
   bind_hosts:
-    - 0.0.0.0
-  port: 5335
+    - 127.0.0.1
+  port: 7035
   anonymize_client_ip: false
   ratelimit: 0
   ratelimit_subnet_len_ipv4: 24
@@ -29,7 +29,7 @@ dns:
     - quic://223.5.5.5
   fallback_dns:
     - h3://223.6.6.6/dns-query
-  upstream_mode: fastest_addr
+  upstream_mode: load_balance
   fastest_timeout: 1s
   allowed_clients: []
   disallowed_clients: []
@@ -48,7 +48,7 @@ dns:
   aaaa_disabled: true
   enable_dnssec: true
   edns_client_subnet:
-    custom_ip: 223.5.5.5
+    custom_ip: 39.185.103.67
     enabled: true
     use_custom: true
   max_goroutines: 300
